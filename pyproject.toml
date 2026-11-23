@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kenya-data-explorer-dashboard"
+version = "1.1.0"
+description = "Interactive Streamlit & Plotly dashboard exploring Kenyan county indicators: rainfall vs maize yield, KCSE scores, house prices, and M-Pesa agents."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [
+    { name = "Lucky Vincent", email = "lordlucky-254@users.noreply.github.com" },
+]
+keywords = [
+    "kenya",
+    "streamlit",
+    "plotly",
+    "pandas",
+    "data-visualization",
+    "dashboard",
+    "data-science",
+]
+dependencies = [
+    "pandas>=2.0,<3.0",
+    "streamlit>=1.40,<2.0",
+    "plotly>=6.0,<7.0",
+    "numpy>=1.26,<3.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.8",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+addopts = "-v"
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"src/app.py" = ["E402"]
